@@ -19,14 +19,11 @@ router.post('/new', ensureAuthenticated, function(req, res){
 
     var lectureID = "";
 
-    var i;
-    for (i = 0; i < 4; i++) {
+    for (var i = 0; i < 4; i++) {
         lectureID += Math.trunc(Math.random() * (10-1) + 1);
     }
 
     Lecture.getLectureByID(lectureID, function(err, lect) {
-
-    	console.log(lect);
 
     	if (lect == null){
 
@@ -34,7 +31,7 @@ router.post('/new', ensureAuthenticated, function(req, res){
                 lectureID : lectureID,
                 title : title,
                 description : description,
-                lecturer: 'Callum Drain'
+                lecturer: req.user.name
             });
 
             Lecture.createLecture(newLecture, function(err, lecture){

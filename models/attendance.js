@@ -16,10 +16,17 @@ var AttendanceSchema = mongoose.Schema({
 
 var Attendance = module.exports = mongoose.model('Attendance', AttendanceSchema);
 
-module.exports.getAttendanceByLectureID = function(lect, callback){
+module.exports.getStudentsByLectureID = function(lect, callback){
 
     var query = {lectureID : lect};
     console.log(lect);
     Attendance.find(query, callback);
 
 }
+
+module.exports.registerStudent = function(details, callback){
+
+    details.save(callback);
+
+}
+

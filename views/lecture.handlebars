@@ -14,6 +14,26 @@
 {{#unless students}}
     <div class="alert alert-warning">No students registered yet!</div>
 {{/unless}}
+{{#if students}}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Student ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+        </tr>
+        </thead>
+    <tbody>
+    {{#each students}}
+        <tr>
+            <th scope="row">{{studentID}}</th>
+            <td>{{name}}</td>
+            <td>{{email}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+    </table>
+{{/if}}
 
 <button type="button" class="btn btn-primary">Add Student</button>
 <button type="button" class="btn btn-secondary">Download as .CSV</button>
