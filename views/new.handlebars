@@ -1,0 +1,18 @@
+<h2 class="page-header">New Lecture</h2>
+{{#if errors}}
+    {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+    {{/each}}
+{{/if}}
+<form method="post" action="/new">
+    <div class="form-group">
+        <label>Lecture Title</label>
+        <input type="text" class="form-control" placeholder="Title" name="title">
+    </div>
+    <div class="form-group">
+        <label>Lecture Description</label>
+        <textarea type="text" class="form-control" placeholder="Description" name="description">
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Create</button>
+</form>

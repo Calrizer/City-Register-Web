@@ -1,0 +1,21 @@
+<h2 class="page-header">{{lecture.title}}</h2>
+<h5>With {{lecture.lecturer}}</h5>
+<h4>{{lecture.description}}</h4>
+
+{{#if errors}}
+    {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+    {{/each}}
+{{/if}}
+<div class="qrWrapper">
+    <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=CITY-REG:{{lecture.lectureID}}:{{lecture.title}}:{{lecture.lecturer}}">
+</div>
+<h4 class="page-header">Attendees</h4>
+{{#unless students}}
+    <div class="alert alert-warning">No students registered yet!</div>
+{{/unless}}
+
+<button type="button" class="btn btn-primary">Add Student</button>
+<button type="button" class="btn btn-secondary">Download as .CSV</button>
+
+
