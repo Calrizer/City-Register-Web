@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+let Student = require('../models/student');
+
 // Lecture Schema
 var LectureSchema = mongoose.Schema({
     lectureID: {
@@ -15,6 +17,7 @@ var LectureSchema = mongoose.Schema({
     description: {
         type: String
     }
+
 });
 
 var Lecture = module.exports = mongoose.model('Lecture', LectureSchema);

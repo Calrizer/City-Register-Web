@@ -31,7 +31,8 @@ router.post('/new', ensureAuthenticated, function(req, res){
                 lectureID : lectureID,
                 title : title,
                 description : description,
-                lecturer: req.user.name
+                lecturer: req.user.name,
+                students: []
             });
 
             Lecture.createLecture(newLecture, function(err, lecture){

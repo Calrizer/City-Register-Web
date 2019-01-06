@@ -19,32 +19,43 @@ router.get('/:lectureID', function(req, res){
                     throw err;
                 }else{
 
-                    var registered = [];
+                    if (students.length == 0){
 
-                    students.forEach(function(item) {
+                        res.render('lecture', {
+                            lecture: lecture,
+                            students: students
+                        });
 
-                        Student.getStudentByStudentID(item.studentID, function (err, student) {
-                            console.log(student);
-                            registered.push(student);
+                    }else{
 
-                            if (registered.length == students.length){
+                        var registered = [];
 
-                                console.log(registered);
+                        students.forEach(function(item) {
 
-                                res.render('lecture', {
-                                    lecture: lecture,
-                                    students: registered
-                                });
+                            Student.getStudentByStudentID(item.studentID, function (err, student) {
+                                console.log(student);
+                                registered.push(student);
 
-                            }
+                                if (registered.length == students.length){
+
+                                    console.log(registered);
+
+                                    res.render('lecture', {
+                                        lecture: lecture,
+                                        students: registered
+                                    });
+
+                                }
+
+                            });
 
                         });
 
-                    });
+                    }
 
                 }
 
-            })
+            });
 
         }
 

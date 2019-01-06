@@ -10,11 +10,14 @@
 <div class="qrWrapper">
     <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=CITY-REG:{{lecture.lectureID}}:{{lecture.title}}:{{lecture.lecturer}}">
 </div>
-<h4 class="page-header">Attendees</h4>
+
 {{#unless students}}
+    <h4 class="page-header">Attendees</h4>
     <div class="alert alert-warning">No students registered yet!</div>
 {{/unless}}
+
 {{#if students}}
+    <h4 class="page-header">Attendees: {{students.length}}</h4>
     <table class="table">
         <thead>
         <tr>
@@ -29,6 +32,7 @@
             <th scope="row">{{studentID}}</th>
             <td>{{name}}</td>
             <td>{{email}}</td>
+            <td><button type="button" class="btn btn-danger">Remove</button></td>
         </tr>
     {{/each}}
     </tbody>
@@ -36,6 +40,9 @@
 {{/if}}
 
 <button type="button" class="btn btn-primary">Add Student</button>
-<button type="button" class="btn btn-secondary">Download as .CSV</button>
-
-
+{{#unless students}}
+    <button type="button" class="btn btn-secondary">Download as .CSV</button>
+{{/unless}}
+{{#if students}}
+    <button type="button" class="btn btn-primary">Download as .CSV</button>
+{{/if}}
